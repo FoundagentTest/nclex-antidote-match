@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NCLEX Antidote Match-Up: Free Drug and Reversal-Agent Matching Game</title>
+<meta name="description" content="A free matching game for the must-know NCLEX antidotes. Pair each drug or toxin with its reversal agent and lock in the ones the exam asks most. No sign-up, works on your phone.">
+<link rel="canonical" href="https://foundagenttest.github.io/nclex-antidote-match/">
+<meta name="robots" content="index, follow">
+<meta name="author" content="High-Yield Nursing Review">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="NCLEX Antidote Match-Up: Free Drug and Reversal-Agent Matching Game">
+<meta property="og:description" content="Match each drug or toxin to its reversal agent. A fast, free way to lock in the must-know NCLEX antidotes. No sign-up, mobile-friendly.">
+<meta property="og:url" content="https://foundagenttest.github.io/nclex-antidote-match/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="NCLEX Antidote Match-Up">
+<meta name="twitter:description" content="Free matching game for the must-know NCLEX drug antidotes and reversal agents.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://nclexpharm.foundagent.net/#org",
+      "name": "High-Yield Nursing Review",
+      "url": "https://nclexpharm.foundagent.net/",
+      "description": "Free NCLEX-RN pharmacology study resources for nursing students in their final cram weeks."
+    },
+    {
+      "@type": "LearningResource",
+      "name": "NCLEX Antidote Match-Up: Free Drug and Reversal-Agent Matching Game",
+      "url": "https://foundagenttest.github.io/nclex-antidote-match/",
+      "learningResourceType": "Game / interactive matching",
+      "educationalLevel": "Nursing school / NCLEX-RN candidates",
+      "teaches": "The must-know NCLEX antidotes: matching each drug or toxin to its reversal agent.",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "author": { "@id": "https://nclexpharm.foundagent.net/#org" },
+      "publisher": { "@id": "https://nclexpharm.foundagent.net/#org" }
+    }
+  ]
+}
+</script>
+
+<style>
+  :root {
+    --ink: #14232b;
+    --muted: #5a6b73;
+    --bg: #f6f4ee;
+    --card: #ffffff;
+    --line: #e2ded3;
+    --teal: #0f5c5a;
+    --teal-dark: #0a3f3e;
+    --good: #1c7a4a;
+    --good-bg: #e9f6ee;
+    --bad: #b23a34;
+    --bad-bg: #fbecea;
+    --accent: #c1613a;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 20px 72px; }
+  h1, h2, h3 { font-family: "Fraunces", Georgia, "Times New Roman", serif; line-height: 1.15; color: var(--teal-dark); font-weight: 600; }
+  a { color: var(--teal); }
+  a:hover { color: var(--teal-dark); }
+
+  header.site { padding: 28px 0 10px; }
+  .kicker { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin: 0 0 6px; }
+  header.site h1 { font-size: 32px; margin: 0 0 12px; }
+  .lede { font-size: 18px; color: var(--muted); margin: 0 0 8px; }
+  .lede a { font-weight: 600; }
+  .note { background: #fffaf0; border: 1px solid #efe3c4; border-radius: 10px; padding: 12px 16px; font-size: 14.5px; color: #6a5a33; margin: 18px 0 4px; }
+
+  .status { display: flex; justify-content: space-between; align-items: baseline; font-size: 14px; color: var(--muted); margin: 20px 0 6px; }
+  .status .matched { font-weight: 600; color: var(--teal-dark); }
+  .track { height: 6px; background: var(--line); border-radius: 4px; overflow: hidden; margin-bottom: 8px; }
+  .track > i { display: block; height: 100%; width: 0; background: var(--teal); transition: width .3s ease; }
+
+  .hint { font-size: 14.5px; color: var(--muted); margin: 6px 0 14px; }
+
+  .board { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 14px; }
+  .col-head { font-size: 12px; letter-spacing: .05em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin: 0 0 2px; }
+  .tile {
+    width: 100%; text-align: left; cursor: pointer; font: inherit; font-size: 15.5px;
+    background: var(--card); border: 1.5px solid var(--line); border-radius: 10px;
+    padding: 12px 13px; color: var(--ink); margin-bottom: 12px; line-height: 1.35;
+    transition: border-color .12s, background .12s, transform .12s;
+  }
+  .tile:hover:not(:disabled) { border-color: var(--teal); }
+  .tile.sel { border-color: var(--teal); background: #eef3f3; box-shadow: 0 0 0 2px rgba(15,92,90,.15); }
+  .tile.done { background: var(--good-bg); border-color: var(--good); color: var(--muted); cursor: default; }
+  .tile.done .dot { color: var(--good); font-weight: 700; }
+  .tile.miss { border-color: var(--bad); background: var(--bad-bg); }
+  .tile:disabled { cursor: default; }
+  .colwrap { display: flex; flex-direction: column; }
+
+  .matched-list { margin: 24px 0 0; }
+  .matched-list h2 { font-size: 18px; margin: 0 0 8px; }
+  .pair { background: var(--card); border: 1px solid var(--line); border-left: 3px solid var(--good); border-radius: 0 10px 10px 0; padding: 10px 14px; margin: 8px 0; font-size: 15px; }
+  .pair b { color: var(--teal-dark); }
+  .pair .why { color: var(--muted); display: block; font-size: 14px; margin-top: 2px; }
+
+  .result { display: none; background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 26px; margin: 20px 0; text-align: center; }
+  .result.show { display: block; }
+  .result .big { font-family: "Fraunces", Georgia, serif; font-size: 40px; color: var(--teal-dark); margin: 4px 0; }
+  .result p { color: var(--muted); margin: 6px 0 0; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 18px; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; background: var(--teal); color: #fff; border: none; text-decoration: none; padding: 12px 20px; border-radius: 10px; font: inherit; font-weight: 600; cursor: pointer; }
+  .btn:hover { background: var(--teal-dark); color: #fff; }
+  .btn.ghost { background: transparent; color: var(--teal); border: 1.5px solid var(--teal); }
+  .btn.ghost:hover { background: #eef3f3; }
+
+  .next-steps { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 22px 24px; margin: 30px 0; }
+  .next-steps h2 { font-size: 22px; margin: 0 0 10px; }
+  .next-steps ul { margin: 10px 0 0; padding-left: 20px; }
+  .next-steps li { margin: 8px 0; }
+
+  footer { margin-top: 40px; padding-top: 22px; border-top: 1px solid var(--line); font-size: 14px; color: var(--muted); }
+  footer h3 { font-size: 15px; margin: 0 0 6px; color: var(--ink); font-family: inherit; }
+  footer p { margin: 0 0 12px; }
+  .disclaimer { font-size: 13px; }
+
+  @media (max-width: 520px) {
+    header.site h1 { font-size: 26px; }
+    .tile { font-size: 14.5px; padding: 11px 11px; }
+    .board { gap: 10px 10px; }
+    body { font-size: 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="site">
+    <p class="kicker">Pharm Made Manageable</p>
+    <h1>NCLEX Antidote Match-Up</h1>
+    <p class="lede">Antidotes are one of the surest sources of points on the NCLEX, if you can pull the pair on demand. Tap a drug on the left, tap its reversal agent on the right, and lock them in. Free, no sign-up, works on your phone.</p>
+    <div class="note">
+      Made by the nursing-review team behind <a href="https://nclexpharm.foundagent.net/">Pharm Made Manageable</a>, a free NCLEX pharmacology study site. These are the must-know reversal pairs. Match one and you get the one-line reason it matters, so a lucky guess still teaches you something.
+    </div>
+  </header>
+
+  <div class="status">
+    <span class="matched" id="s-matched">Matched 0 of 0</span>
+    <span id="s-miss">Misses: 0</span>
+  </div>
+  <div class="track"><i id="bar"></i></div>
+  <p class="hint">Tap a drug or toxin, then tap the reversal agent you think matches it.</p>
+
+  <div class="board">
+    <div class="colwrap">
+      <p class="col-head">Drug or toxin</p>
+      <div id="col-left"></div>
+    </div>
+    <div class="colwrap">
+      <p class="col-head">Reversal agent</p>
+      <div id="col-right"></div>
+    </div>
+  </div>
+
+  <section class="result" id="result">
+    <p class="kicker">Board cleared</p>
+    <div class="big" id="r-title">Every pair matched</div>
+    <p id="r-msg"></p>
+    <div class="cta-row">
+      <button class="btn ghost" id="r-again">Shuffle and play again</button>
+      <a class="btn" href="https://nclexpharm.foundagent.net/nclex-pharmacology-cheat-sheet">See the full antidote sheet</a>
+    </div>
+  </section>
+
+  <section class="matched-list" id="matched-list" style="display:none">
+    <h2>Pairs you have locked in</h2>
+    <div id="matched-body"></div>
+  </section>
+
+  <section class="next-steps">
+    <h2>Where to go next</h2>
+    <p>The must-know antidotes are worth memorizing cold. When these come automatically, put them next to the labs and drug classes they belong to. Everything below is free.</p>
+    <ul>
+      <li><a href="https://nclexpharm.foundagent.net/nclex-pharmacology-cheat-sheet">Antidotes and lab-values cheat sheet</a>: the full reversal-agent table on one printable page, next to therapeutic levels and hold parameters.</li>
+      <li><a href="https://nclexpharm.foundagent.net/">Pharm Made Manageable</a>: the free study site and the framework that makes 54 drug classes learnable in your final weeks.</li>
+      <li><a href="https://nclexpharm.foundagent.net/high-yield-drug-classes">High-yield drug classes</a>: where each of these drugs and its antidote actually shows up.</li>
+    </ul>
+    <p style="margin-top:14px">Want the whole method, cram tables and memory hooks included? The full guide, <em>NCLEX-RN Pharmacology Made Manageable</em> (PDF and EPUB), is <a href="https://nclexpharm.foundagent.net/#book">available for $12.99</a>. The site above is free either way.</p>
+  </section>
+
+  <footer>
+    <h3>Who made this</h3>
+    <p>Written by High-Yield Nursing Review, the team behind the free study site <a href="https://nclexpharm.foundagent.net/">Pharm Made Manageable</a> and the guide <em>NCLEX-RN Pharmacology Made Manageable</em>. We built this game as a free resource; the links above are our own site and book, and we are telling you that plainly.</p>
+    <h3 style="margin-top:16px">A note on safety</h3>
+    <p class="disclaimer">This is study material for the NCLEX, not medical advice and not a substitute for clinical judgment. Antidotes and their use follow commonly taught NCLEX references and can vary by source; your facility's own policies and current drug references govern real patient care. NCLEX-RN is a registered trademark of the National Council of State Boards of Nursing, which does not endorse and is not affiliated with this resource.</p>
+  </footer>
+
+</div>
+
+<script>
+const PAIRS = [
+  { id: "hep", drug: "Heparin", antidote: "Protamine sulfate", why: "Reverses heparin's bleeding. Heparin is monitored by aPTT." },
+  { id: "warf", drug: "Warfarin", antidote: "Vitamin K (phytonadione)", why: "Reverses warfarin. A serious bleed may also need PCC or fresh frozen plasma. Warfarin is monitored by INR." },
+  { id: "op", drug: "Opioids (morphine, fentanyl)", antidote: "Naloxone", why: "Reverses opioid respiratory depression. It is short-acting, so watch for re-sedation." },
+  { id: "benzo", drug: "Benzodiazepines", antidote: "Flumazenil", why: "Reverses benzodiazepine sedation. Used with caution because it can trigger seizures." },
+  { id: "apap", drug: "Acetaminophen", antidote: "Acetylcysteine", why: "Protects the liver in acetaminophen overdose. Give early." },
+  { id: "dig", drug: "Digoxin", antidote: "Digoxin immune Fab", why: "Binds digoxin in serious toxicity. Signs: bradycardia, nausea, yellow or green halos." },
+  { id: "mag", drug: "Magnesium sulfate toxicity", antidote: "Calcium gluconate", why: "Given for magnesium toxicity, for example loss of reflexes or respiratory depression in a treated patient." },
+  { id: "iron", drug: "Iron", antidote: "Deferoxamine", why: "Chelates iron in iron overdose, a classic pediatric poisoning." },
+  { id: "eg", drug: "Ethylene glycol or methanol", antidote: "Fomepizole", why: "Blocks the enzyme that turns these alcohols into toxic acids." },
+  { id: "organo", drug: "Organophosphate (cholinergic)", antidote: "Atropine", why: "Dries the cholinergic flood; pralidoxime is added to reactivate the enzyme." },
+  { id: "bb", drug: "Beta-blocker overdose", antidote: "Glucagon", why: "Raises heart rate and contractility when a beta-blocker has overdosed the heart." },
+  { id: "dabi", drug: "Dabigatran (a DOAC)", antidote: "Idarucizumab", why: "The specific reversal agent for the direct thrombin inhibitor dabigatran." }
+];
+
+const total = PAIRS.length;
+let selLeft = null, selRight = null, matched = 0, misses = 0, locking = false;
+const el = id => document.getElementById(id);
+
+function shuffle(arr) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function tile(text, id, side) {
+  const b = document.createElement("button");
+  b.type = "button";
+  b.className = "tile";
+  b.dataset.id = id;
+  b.dataset.side = side;
+  b.textContent = text;
+  b.addEventListener("click", () => onTap(b));
+  return b;
+}
+
+function build() {
+  selLeft = null; selRight = null; matched = 0; misses = 0; locking = false;
+  el("result").classList.remove("show");
+  el("matched-list").style.display = "none";
+  el("matched-body").innerHTML = "";
+  const left = el("col-left"), right = el("col-right");
+  left.innerHTML = ""; right.innerHTML = "";
+  shuffle(PAIRS).forEach(p => left.appendChild(tile(p.drug, p.id, "L")));
+  shuffle(PAIRS).forEach(p => right.appendChild(tile(p.antidote, p.id, "R")));
+  updateStatus();
+}
+
+function onTap(b) {
+  if (locking || b.classList.contains("done")) return;
+  const side = b.dataset.side;
+  if (side === "L") {
+    if (selLeft) selLeft.classList.remove("sel");
+    selLeft = b; b.classList.add("sel");
+  } else {
+    if (selRight) selRight.classList.remove("sel");
+    selRight = b; b.classList.add("sel");
+  }
+  if (selLeft && selRight) evaluate();
+}
+
+function evaluate() {
+  const l = selLeft, r = selRight;
+  if (l.dataset.id === r.dataset.id) {
+    l.classList.remove("sel"); r.classList.remove("sel");
+    l.classList.add("done"); r.classList.add("done");
+    l.disabled = true; r.disabled = true;
+    l.innerHTML = '<span class="dot">&#10003; </span>' + l.textContent;
+    r.innerHTML = '<span class="dot">&#10003; </span>' + r.textContent;
+    matched++;
+    addMatched(l.dataset.id);
+    selLeft = null; selRight = null;
+    updateStatus();
+    if (matched === total) finish();
+  } else {
+    misses++;
+    updateStatus();
+    locking = true;
+    l.classList.add("miss"); r.classList.add("miss");
+    setTimeout(() => {
+      l.classList.remove("miss", "sel"); r.classList.remove("miss", "sel");
+      selLeft = null; selRight = null; locking = false;
+    }, 650);
+  }
+}
+
+function addMatched(id) {
+  const p = PAIRS.find(x => x.id === id);
+  el("matched-list").style.display = "block";
+  const div = document.createElement("div");
+  div.className = "pair";
+  div.innerHTML = "<b>" + p.drug + "</b> &rarr; <b>" + p.antidote + "</b><span class=\"why\">" + p.why + "</span>";
+  el("matched-body").appendChild(div);
+}
+
+function updateStatus() {
+  el("s-matched").textContent = "Matched " + matched + " of " + total;
+  el("s-miss").textContent = "Misses: " + misses;
+  el("bar").style.width = (matched / total * 100) + "%";
+}
+
+function finish() {
+  el("r-title").textContent = misses === 0 ? "A perfect board" : "Board cleared";
+  let msg;
+  if (misses === 0) msg = "Every antidote on the first try. That is exam-ready recall. Run it again in a day to keep it.";
+  else if (misses <= 3) msg = "Cleared with only " + misses + " misses. Shuffle and go again to make the last few automatic.";
+  else msg = "Cleared it, and the misses show you which pairs to drill. Shuffle and replay, then read them on the free antidote sheet below.";
+  el("r-msg").textContent = msg;
+  el("result").classList.add("show");
+  el("result").scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+el("r-again").onclick = build;
+build();
+</script>
+</body>
+</html>
